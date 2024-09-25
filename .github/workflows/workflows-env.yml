@@ -4,10 +4,17 @@ on: push
 
 env: 
     CODECOV_TOKEN : Workflow_Env
+    IS_DEPLOY : false
 
 jobs:
     Read_Workflow_Env:
         runs-on: ubuntu-latest
         steps:
             - name: Read Env from workflow level
-              run: echo ${{env.CODECOV_TOKEN}}
+              run: |
+                echo ${{env.CODECOV_TOKEN}}
+                echo "IS_DEPLOY=true" >> $GITHUB_ENV
+            
+            - name: Deploy if the condition is true
+              if: ${{env.IS_DEPLOY}} == true
+              run: echo "Deploy Successfully"
