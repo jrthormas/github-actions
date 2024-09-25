@@ -15,5 +15,5 @@ jobs:
 
             - name: List directory
               run : |
-                    cwd
+                    pwd
                     ls -al
