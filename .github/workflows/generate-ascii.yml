@@ -60,16 +60,24 @@ jobs:
       steps:
             - name: Read from step level
               env:
-                CODECOV_TOKEN: Hello
+                CODECOV_TOKEN: Step_Level_Env
               run: echo $CODECOV_TOKEN
 
             - name: Read from step level(option 2)
               env:
-                CODECOV_TOKEN: Hello2
+                CODECOV_TOKEN: Step_Level_Env
               run: echo ${{env.CODECOV_TOKEN}}
 
             - name: Read from secrets
-              run: echo ${{secrets.CODECOV_TOKEN}}
+              run: echo ${{secrets.CODECOV_TOKENR}}
+
+    Read_Env_Job_Level:
+      runs-on: ubuntu-latest
+      env:
+        CODECOV_TOKEN: Env_Job_Level
+      steps:
+            - name: Read env from job level
+              run: echo ${{env.CODECOV_TOKEN}}
 
       
 
