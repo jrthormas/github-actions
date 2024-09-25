@@ -17,3 +17,14 @@ jobs:
               run : |
                     pwd
                     ls -al
+
+    build_job_2:
+        needs: build_job_1
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sleep 30 seconds
+              run: sleep 30
+
+            - name: Test file exists
+              run: grep -i 'dragon' dragon.txt
+
