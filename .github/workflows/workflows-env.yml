@@ -20,5 +20,5 @@ jobs:
               run: echo "Deploy Successfully"
 
             - name: Deploy if starts with true
-              if: startsWith(github.ref, 'refs/heads/dev')
-              run: echo "Deploy Successfully"
+              if: startsWith(${{env.IS_DEPLOY}}, 'refs/heads/dev')
+              run: echo startsWith(${{env.IS_DEPLOY}}, 'refs/heads/dev')
