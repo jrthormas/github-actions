@@ -1,0 +1,13 @@
+name: Workflow Env
+
+on: push
+
+env: 
+    CODECOV_TOKEN : Workflow_Env
+
+jobs:
+    Read_Workflow_Env:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read Env from workflow level
+              run: echo ${{env.CODECOV_TOKEN}}
