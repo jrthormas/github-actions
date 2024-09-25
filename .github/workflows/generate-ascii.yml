@@ -69,7 +69,7 @@ jobs:
               run: echo ${{env.CODECOV_TOKEN}}
 
             - name: Read from secrets
-              run: echo ${{secrets.CODECOV_TOKENR}}
+              run: echo ${{secrets.CODECOV_TOKEN}}
 
     Read_Env_Job_Level:
       runs-on: ubuntu-latest
