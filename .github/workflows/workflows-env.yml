@@ -19,6 +19,3 @@ jobs:
               if: ${{env.IS_DEPLOY == 'true'}}
               run: echo "Deploy Successfully"
 
-            - name: Deploy if starts with true
-              if: startsWith(${{env.IS_DEPLOY}}, 'refs/heads/dev')
-              run: echo startsWith(${{env.IS_DEPLOY}}, 'refs/heads/dev')

@@ -1,0 +1,13 @@
+name: Deploy Workflow
+
+on:
+    repository_dispatch:
+        types: [deploy_workflow]
+
+jobs:
+    Deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy
+              run: echo "Deploy successfully"
+        
