@@ -1,9 +1,14 @@
 name: Generate ASCII Artwork
 
 on:
-    push
+    push:
+    workflow_dispatch:
 
-jobs: 
+concurrency:
+    group: deploy_concurrency
+    cancel-in-progress: true
+
+jobs:      
     Build_Job_1: 
         runs-on: ubuntu-latest
         steps:
@@ -73,11 +78,10 @@ jobs:
 
     Read_Env_Job_Level:
       runs-on: ubuntu-latest
+      needs: Read_Env
       env:
         CODECOV_TOKEN: Env_Job_Level
       steps:
             - name: Read env from job level
               run: echo ${{env.CODECOV_TOKEN}}
-
-      
 
