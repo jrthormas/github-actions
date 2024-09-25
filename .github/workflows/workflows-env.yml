@@ -16,5 +16,5 @@ jobs:
                 echo "IS_DEPLOY=false" >> $GITHUB_ENV
             
             - name: Deploy if the condition is true
-              if: ${{env.IS_DEPLOY == 'true'}}
+              if: ${{env.IS_DEPLOY}} == 'true'
               run: echo "Deploy Successfully"
