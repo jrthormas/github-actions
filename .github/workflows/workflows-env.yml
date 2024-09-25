@@ -20,5 +20,5 @@ jobs:
               run: echo "Deploy Successfully"
 
             - name: Deploy if starts with true
-              if: startsWith(${{env.IS_DEPLOY}},"true")
+              if: startsWith(${{env.IS_DEPLOY}},'tr')
               run: echo "Deploy Successfully"
