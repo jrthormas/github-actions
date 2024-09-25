@@ -13,7 +13,7 @@ jobs:
             - name: Read Env from workflow level
               run: |
                 echo ${{env.CODECOV_TOKEN}}
-                echo "IS_DEPLOY=true" >> $GITHUB_ENV
+                echo "IS_DEPLOY=false" >> $GITHUB_ENV
             
             - name: Deploy if the condition is true
               if: ${{env.IS_DEPLOY}} == true
