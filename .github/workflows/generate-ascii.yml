@@ -4,7 +4,7 @@ on:
     push
 
 jobs: 
-    build_job_1: 
+    Build_Job_1: 
         runs-on: ubuntu-latest
         steps:
             - name: Install cowsay program
@@ -17,6 +17,7 @@ jobs:
               run : |
                     pwd
                     ls -al
+
             - name: Upload artifact file
               id: upload-artifact
               uses: actions/upload-artifact@v4
@@ -25,8 +26,8 @@ jobs:
                 path: dragon.txt
                 if-no-files-found: error
 
-    build_job_2:
-        needs: build_job_1
+    Build_Job_2:
+        needs: Build_Job_1
         runs-on: ubuntu-latest
         steps:
             - name: Download artifact file
@@ -38,8 +39,8 @@ jobs:
             - name: Test file exists
               run: grep -i 'dragon' dragon.txt
 
-    build_job_3:
-        needs: [build_job_1,build_job_2]
+    Build_Job_3:
+        needs: [Build_Job_1,Build_Job_2]
         runs-on: ubuntu-latest
         steps:
             - name: Download artifact file
@@ -53,4 +54,22 @@ jobs:
 
             - name: Deploy
               run: echo "Successfully deployed"
+
+    Read_Env:
+      runs-on: ubuntu-latest
+      steps:
+            - name: Read from step level
+              env:
+                CODECOV_TOKEN: Hello
+              run: echo $CODECOV_TOKEN
+
+            - name: Read from step level(option 2)
+              env:
+                CODECOV_TOKEN: Hello2
+              run: echo ${{env.CODECOV_TOKEN}}
+
+            - name: Read from secrets
+              run: echo ${{secrets.CODECOV_TOKEN}}
+
+      
 
